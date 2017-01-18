@@ -1,0 +1,32 @@
+<!-- public/views/nerd.html -->
+
+<div class="jumbotron text-center" ng-controller='NerdController'>
+    <h1>Nerds and Proud</h1>
+
+    <p>{{ tagline }}</p>
+	{{nerdVals.data}}
+	 <div ng-repeat="nerds in nerdVals.data">
+	 
+		<p>
+			<a ng-click="del(nerds._id);" href="#">{{ nerds.name }}</a>
+		</p>
+		<p>{{ nerds.occupation }}
+		</p>
+		<a ng-click="update(nerds._id)" href="#">Edit</a>
+	 </div>
+		
+	 <div>
+			<h1 >{{message}}</h1>
+			
+			<a href="#" ng-click="testPaypal()">Test PayPal</a>
+	 </div>
+	<div class="col-xs-4">
+	<form  ng-submit="isUpdate? editNerd() : createNerds()" method='POST' id="nerdForm">
+		
+		<input class="form-control" type='text'   name='name' placeholder='name' ng-model='nerdData.name'/>
+		</br>
+		<input class="form-control" type='text' name='occupation' placeholder='occupation' ng-model='nerdData.occupation'/>	
+		<input type="hidden"  name="hiddenId" ng-model='nerdData.id' />
+			<input class="btn btn-lg btn-primary" type="submit" id="submit" value="Submit" />
+	</div>
+</div>
